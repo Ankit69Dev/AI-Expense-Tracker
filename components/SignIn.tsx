@@ -1,6 +1,6 @@
 "use client";
 
-// import { signIn } from "next-auth/react";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 
 const GoogleIcon = () => (
@@ -30,14 +30,14 @@ interface Props {
 
 export default function GoogleSignInButton({ callbackUrl = "/dashboard" }: Props) {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
   const handleSignIn = async () => {
     setLoading(true);
-    try {
-      await signIn("google", { callbackUrl });
-    } catch {
-      setLoading(false);
-    }
+    // Simulate API call before redirecting to dashboard
+    setTimeout(() => {
+      router.push(callbackUrl);
+    }, 850);
   };
 
   return (
