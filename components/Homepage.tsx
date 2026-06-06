@@ -177,12 +177,28 @@ export default function LoginPage() {
 
           </div>
 
-          {/* Legal */}
-          <p className="text-center text-[11.5px] text-gray-400 mt-5 leading-relaxed">
-            By signing in you agree to our{" "}
-            <a href="/terms" className="text-orange-500 hover:underline font-medium">Terms</a>
-            {" "}and{" "}
-            <a href="/privacy" className="text-orange-500 hover:underline font-medium">Privacy Policy</a>.
+          {/* Footer */}
+          <p className="flex items-center justify-center flex-wrap gap-1 text-[11.5px] text-gray-400 mt-3">
+            Made with{" "}
+            <span className="text-rose-400" aria-label="love">❤</span>
+            {" "}by{" "}
+            <a
+              href="https://www.linkedin.com/in/abhijeet-anand-87149a33a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-600 font-medium hover:underline transition-colors"
+            >
+              Abhijeet Anand
+            </a>
+            {" "}&amp;{" "}
+            <a
+              href="https://www.linkedin.com/in/ankit-pandey0304"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-orange-500 hover:text-orange-600 font-medium hover:underline transition-colors"
+            >
+              Ankit Pandey
+            </a>
           </p>
 
         </div>

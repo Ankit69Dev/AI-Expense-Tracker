@@ -181,7 +181,7 @@ export default function DashboardClient({ user, stats, initialExpenses }: Props)
       confirmClass: "bg-gray-800 hover:bg-gray-900",
       onConfirm: () => {
         closeConfirm();
-        signOut({ callbackUrl: "/login" });
+        signOut({ callbackUrl: "/" });
       },
     });
   };
