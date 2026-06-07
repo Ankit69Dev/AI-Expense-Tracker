@@ -1,11 +1,12 @@
+// app/dashboard/page.tsx
 import { auth } from "@/lib/auth";
 import { prisma } from "@/lib/db";
 import { redirect } from "next/navigation";
-import DashboardHome from "@/app/dashboard/DashboardHome";
+import DashboardHome from "./DashboardHome";
 
 export default async function DashboardPage() {
   const session = await auth();
-  if (!session?.user?.id) redirect("/");
+  if (!session?.user?.id) redirect("/login");
   const uid = session.user.id;
   const now = new Date();
   const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
@@ -24,8 +25,8 @@ export default async function DashboardPage() {
     prisma.investment.findMany({ where: { userId: uid } }),
   ]);
 
-  const totalThisMonth = thisMonth.reduce((s: number, e: { amount: any; }) => s + Number(e.amount), 0);
-  const totalLastMonth = lastMonth.reduce((s: number, e: { amount: any; }) => s + Number(e.amount), 0);
+  const totalThisMonth = thisMonth.reduce((s, e) => s + Number(e.amount), 0);
+  const totalLastMonth = lastMonth.reduce((s, e) => s + Number(e.amount), 0);
 
   const catMap = new Map<string, number>();
   for (const e of thisMonth) catMap.set(e.category, (catMap.get(e.category) ?? 0) + Number(e.amount));
@@ -38,15 +39,15 @@ export default async function DashboardPage() {
   }
   const monthly = [...monthMap.entries()].map(([month, total]) => ({ month, total })).sort((a, b) => a.month.localeCompare(b.month));
 
-  const totalInvested = investments.reduce((s: number, i: { amountInvested: any; }) => s + Number(i.amountInvested), 0);
-  const totalInvestmentValue = investments.reduce((s: number, i: { currentValue: any; }) => s + Number(i.currentValue), 0);
+  const totalInvested = investments.reduce((s, i) => s + Number(i.amountInvested), 0);
+  const totalInvestmentValue = investments.reduce((s, i) => s + Number(i.currentValue), 0);
 
   return (
     <DashboardHome
       user={{ id: uid, name: session.user.name ?? "User", email: session.user.email ?? "", image: session.user.image ?? null }}
       stats={{ totalThisMonth, totalLastMonth, categories, monthly, totalCount: count, totalInvested, totalInvestmentValue }}
-      initialExpenses={recent.map((e: { id: any; title: any; amount: any; category: any; date: { toISOString: () => string | any[]; }; note: any; }) => ({ id: e.id, title: e.title, amount: Number(e.amount), category: e.category, date: e.date.toISOString().slice(0,10), note: e.note ?? "" }))}
-      initialGoals={goals.map((g: { id: any; title: any; emoji: any; targetAmount: any; currentAmount: any; deadline: { toISOString: () => string | any[]; }; }) => ({ id: g.id, title: g.title, emoji: g.emoji, targetAmount: Number(g.targetAmount), currentAmount: Number(g.currentAmount), deadline: g.deadline?.toISOString().slice(0,10) ?? null }))}
+      initialExpenses={recent.map(e => ({ id: e.id, title: e.title, amount: Number(e.amount), category: e.category, date: new Date(e.date as Date).toISOString().slice(0,10), note: e.note ?? "" }))}
+      initialGoals={goals.map(g => ({ id: g.id, title: g.title, emoji: g.emoji, targetAmount: Number(g.targetAmount), currentAmount: Number(g.currentAmount), deadline: g.deadline ? new Date(g.deadline).toISOString().slice(0,10) : null }))}
     />
   );
 }
