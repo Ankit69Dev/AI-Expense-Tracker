@@ -54,11 +54,7 @@ const features = [
   },
 ];
 
-const stats = [
-  { value: "2.4M+", label: "Transactions" },
-  { value: "₹840Cr", label: "Savings found" },
-  { value: "98%", label: "Accuracy" },
-];
+
 
 /* ── Metadata ──────────────────────────────────────────────── */
 
@@ -98,7 +94,7 @@ export default function LoginPage() {
           </h1>
           <p className="text-white/70 text-[15px] leading-relaxed max-w-sm">
             AI that learns your spending habits, flags unusual charges, and tells you
-            exactly where to cut back — automatically.
+            exactly where to cut back automatically.
           </p>
         </div>
 
@@ -120,18 +116,7 @@ export default function LoginPage() {
           ))}
         </div>
 
-        {/* Stats */}
-        <div className="relative z-10 flex gap-2.5">
-          {stats.map((s) => (
-            <div
-              key={s.label}
-              className="flex-1 bg-white/[0.13] border border-white/20 rounded-full py-2.5 text-center"
-            >
-              <p className="text-white font-bold text-[17px] tracking-tight">{s.value}</p>
-              <p className="text-white/60 text-[11px] mt-0.5">{s.label}</p>
-            </div>
-          ))}
-        </div>
+        
       </aside>
 
       {/* ── RIGHT PANEL ──────────────────────────────────────── */}
