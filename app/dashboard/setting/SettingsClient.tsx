@@ -153,7 +153,7 @@ export default function SettingsClient({ user, stats }: Props) {
         {/* ── App Info ─────────────────────────────────────── */}
         <Section title="About">
           <Row label="App Name"    value="SpendWise AI" />
-          <Row label="Version"     value="1.0.0" />
+          <Row label="Version"     value="2.0.0" />
           <Row label="Database"    value="Neon PostgreSQL (Serverless)" />
           <Row label="AI Provider" value="Groq · Llama 3.3 70B Versatile" />
           <Row label="Auth"        value="NextAuth v5 · Google OAuth" />
