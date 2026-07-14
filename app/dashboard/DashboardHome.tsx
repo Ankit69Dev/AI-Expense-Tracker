@@ -129,7 +129,7 @@ export default function DashboardHome({ user, stats, initialExpenses, initialGoa
         <div className="bg-white rounded-2xl border border-gray-200 p-5 shadow-sm">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-sm font-semibold text-gray-900">🎯 Goals</h2>
-            <a href="/dashboard/goals" className="text-[11.5px] text-orange-500 hover:underline">View all</a>
+            <a href="/dashboard/goal" className="text-[11.5px] text-orange-500 hover:underline">View all</a>
           </div>
           {initialGoals.length===0?<p className="text-gray-400 text-sm text-center py-4">No goals yet</p>:(
             <div className="space-y-3">

@@ -150,29 +150,6 @@ export default function SettingsClient({ user, stats }: Props) {
           />
         </Section>
 
-        {/* ── Notifications ────────────────────────────────── */}
-        <Section title="Notifications">
-          {[
-            { label: "Monthly Summary", desc: "Receive a summary at the end of each month", enabled: true },
-            { label: "Budget Alerts",   desc: "Alert when you exceed 80% of a budget",       enabled: true },
-            { label: "Goal Milestones", desc: "Notify when you hit 50% and 100% of a goal",  enabled: false },
-          ].map((n) => (
-            <div key={n.label} className="flex items-center justify-between py-3 border-b border-gray-50 last:border-0">
-              <div>
-                <p className="text-sm font-medium text-gray-700">{n.label}</p>
-                <p className="text-xs text-gray-400 mt-0.5">{n.desc}</p>
-              </div>
-              <button
-                className={`w-11 h-6 rounded-full transition-colors relative cursor-pointer ${n.enabled ? "bg-orange-500" : "bg-gray-200"}`}
-                aria-label="toggle"
-              >
-                <span className={`absolute top-0.5 w-5 h-5 rounded-full bg-white shadow transition-all ${n.enabled ? "left-5" : "left-0.5"}`} />
-              </button>
-            </div>
-          ))}
-          <p className="text-xs text-gray-400 mt-3">Note: Notification delivery requires additional setup (email service).</p>
-        </Section>
-
         {/* ── App Info ─────────────────────────────────────── */}
         <Section title="About">
           <Row label="App Name"    value="SpendWise AI" />
