@@ -184,6 +184,14 @@ export default function LoginPage() {
             >
               Ankit Pandey
             </a>
+            {" "}&amp;{" "} 
+            <a
+            href="https://i.pinimg.com/736x/45/a4/c2/45a4c2ab6d4f8b39e2848000ca8aa665.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-orange-500 hover:text-orange-600 font-medium cursor-pointer hover:underline transition-colors">
+              Aditi
+            </a>
           </p>
 
         </div>
